@@ -3,6 +3,7 @@ import express from 'express'
 import cors  from 'cors'
 import db from './module/index.js'
 import userRouter from './router/user.router.js'
+import contactRouter from './router/contact.router.js'
 // import path  from 'path'
 
 const app = express()
@@ -13,6 +14,7 @@ const allowedOrigins = [
   "http://localhost:3001",
   "http://localhost:9000",
   "http://localhost:8000",
+  "http://192.168.1.109:3000"
 ];
 
 app.use(
@@ -37,7 +39,9 @@ app.get('/api/example', (req, res) => {
 })
 
 app.use('/api/users', userRouter)
-// 404 handler
+app.use('/api/contact', contactRouter)
+
+
 app.use((req, res, next) => {
   res.status(404).json({ error: 'Not Found' })
 })

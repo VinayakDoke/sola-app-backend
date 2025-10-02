@@ -11,7 +11,7 @@ class UserController {
       } 
       res.status(201).json(user)  
     } catch (error) {
-      res.status(500).json({ error: 'Registration failed.', message:"something went wrong" } )
+      res.status(500).json({ status: 'error', message:"something went wrong" } )
     }
   }
 }
