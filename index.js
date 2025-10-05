@@ -4,6 +4,7 @@ import cors  from 'cors'
 import db from './module/index.js'
 import userRouter from './router/user.router.js'
 import contactRouter from './router/contact.router.js'
+import cookieParser from 'cookie-parser'
 // import path  from 'path'
 
 const app = express()

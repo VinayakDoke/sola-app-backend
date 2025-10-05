@@ -69,8 +69,13 @@ class UserService {
     }
   }
 
-  async findUserByEmail (email) {
-    return await User.findOne({ where: { email } })
+  async findUserByEmailTOAuth(email) {
+    try {
+      return await User.scope("withPassword").findOne({ where: { email } })
+    } catch (error) {
+      console.error('Error finding user by email:', error)
+      throw error
+    }
   }
  
 }

@@ -1,17 +1,19 @@
 import bcrypt from 'bcryptjs'
 import { generateToken } from '../utils/generateToken.js'
-import { findUserByEmail } from '../service/user.service.js'
+import userService from '../service/user.service.js'
 
-export const login = async (req, res) => {
+class authController {
+ login = async (req, res) => {
   try {
     const { email, password } = req.body
-    const user = findUserByEmail(email)
-
-    if (!user) return res.status(404).json({ message: 'User not found' })
+    const user = await userService.findUserByEmailTOAuth(email)
+   
+    if (!user) return res.status(404).json({ status : 'fail', message: 'User not found' })
 
     const isMatch = await bcrypt.compare(password, user.password)
+    
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' })
+      return res.status(400).json({ status : 'fail', message: 'Invalid credentials' })
     }
     // Generate JWT
     let jwtContent = { id: user.id, email: user.email, name: user.name }
@@ -40,9 +42,13 @@ export const login = async (req, res) => {
 
     return res.status(200).json({
       message: 'Login successful',
+      status : 'success',
       user: { name: user.name, email: user.email }
     })
   } catch (error) {
-    res.status(500).json({ message: error.message })
+    console.error('Login error:', error)
+    res.status(500).json({  status : 'fail',message: error.message })
   }
 }
+}
+export default new authController()
