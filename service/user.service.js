@@ -69,8 +69,9 @@ class UserService {
     }
   }
 
-  updateUser (userId, userData) {
-    // Logic to update user information
+  async findUserByEmail (email) {
+    return await User.findOne({ where: { email } })
   }
+ 
 }
 export default new UserService()

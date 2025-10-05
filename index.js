@@ -28,6 +28,7 @@ app.use(express.json()) // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })) // Parse URL-encoded bodies
 
 
+app.use(cookieParser());
 // Routes
 app.get('/', (req, res) => {
   res.send('Hello World! Express is running.')
