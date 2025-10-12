@@ -5,6 +5,8 @@ import db from './module/index.js'
 import userRouter from './router/user.router.js'
 import contactRouter from './router/contact.router.js'
 import cookieParser from 'cookie-parser'
+import upload from './middleware/upload.js'
+import imageRouter  from './router/image.router.js'
 // import path  from 'path'
 
 const app = express()
@@ -28,9 +30,13 @@ app.use(
 app.use(express.json()) // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })) // Parse URL-encoded bodies
 
-
+app.use('/api/images', imageRouter);
 app.use(cookieParser());
 // Routes
+app.post('/upload', upload.single('file'), (req, res) => {
+  if (!req.file) return res.status(400).send('No file uploaded.');
+  res.send(`File uploaded successfully: ${req.file.filename}`);
+});
 app.get('/', (req, res) => {
   res.send('Hello World! Express is running.')
 })
