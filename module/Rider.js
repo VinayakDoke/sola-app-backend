@@ -45,33 +45,33 @@ Rider.init(
       type: DataTypes.STRING(20),
       allowNull: true,
     },
-    driving_licence: {
+    driving_license: {
       type: DataTypes.STRING(30),
       allowNull: true,
     },
-    driving_expriry: {
+    driving_license_expiry: {
       type: DataTypes.DATE,
       allowNull: true,
     },
-    driving_exprience: {
+    driving_experience: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     address: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     pic: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     adhar_photo: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     driving_licence_photo: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     createdAt: {
       type: DataTypes.DATE,

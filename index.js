@@ -7,6 +7,9 @@ import contactRouter from './router/contact.router.js'
 import cookieParser from 'cookie-parser'
 import upload from './middleware/upload.js'
 import imageRouter  from './router/image.router.js'
+import riderRouter from './router/rider.router.js'
+import vehicleRouter from './router/vehicle.router.js'
+import { verifyToken } from './middleware/verifyToken.js'
 // import path  from 'path'
 
 const app = express()
@@ -48,7 +51,8 @@ app.get('/api/example', (req, res) => {
 
 app.use('/api/users', userRouter)
 app.use('/api/contact', contactRouter)
-
+app.use('/api/riders', verifyToken, riderRouter)
+app.use('/api/vehicles', verifyToken, vehicleRouter)
 
 app.use((req, res, next) => {
   res.status(404).json({ error: 'Not Found' })
