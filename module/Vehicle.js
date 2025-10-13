@@ -52,15 +52,15 @@ Vehicle.init(
       type: DataTypes.DATE,
       allowNull: true,
     },
-    fitness_certicate_no: {
+    fitness_certificate_no: {
       type: DataTypes.STRING(200),
       allowNull: true,
     },
-    fitness_certicate_from: {
+    fitness_certificate_from: {
       type: DataTypes.DATE,
       allowNull: true,
     },
-    fitness_certicate_to: {
+    fitness_certificate_to: {
       type: DataTypes.DATE,
       allowNull: true,
     },
@@ -92,23 +92,23 @@ Vehicle.init(
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    veh__pic: {
+    veh_pic: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    veh__pic1: {
+    veh_pic1: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    veh__pic2: {
+    veh_pic2: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    veh__pic3: {
+    veh_pic3: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    veh__pic4: {
+    veh_pic4: {
       type: DataTypes.STRING(255),
       allowNull: true,
     },

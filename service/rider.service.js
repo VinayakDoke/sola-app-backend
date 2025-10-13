@@ -41,7 +41,7 @@ class RiderService {
   getRiderByVenderId = async vender_id => {
     try {
       const riders = await Rider.findAll({ where: { vender_id } })
-      return { status: 'success', riders }
+      return { status: 'success', riders:riders ,message:'riders fetched successfully'}
     } catch (err) {
       console.log(err)
       return { status: 'error', message: 'Failed to fetch riders' }
@@ -59,20 +59,16 @@ class RiderService {
   }
   updateRiderCertificate = async (data, id) => {
     try {
-
-    //      "status": "success",
-    // "message": "Rider updated successfully",
-    // "user": {
-    //     "passport_photo": "passport_photo-1760283922602-617200413.webp",
-    //     "adhar_photo": "adhar_photo-1760283922603-340966562.png",
-    //     "driving_license_photo": "driving_license_photo-1760283922614-946391133.png"
-    // }
-
-      const result = await Rider.update({
-        pic: data.passport_photo,
-        adhar_photo: data.adhar_photo,
-        driving_licence_photo: data.driving_license_photo
-    }, { where: { id: id } })
+     
+      const result = await Rider.update(
+        {
+          pic: data.passport_photo,
+          adhar_photo: data.adhar_photo,
+          driving_licence_photo: data.driving_license_photo
+        },
+        { where: { id: id }, logging: console.log },
+        
+      )
       return {
         status: 'success',
         message: 'Rider updated successfully',
