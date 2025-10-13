@@ -14,11 +14,8 @@ const refreshToken = async (req, res, token, refresh_token) => {
         process.env.JWT_REFRESH_SECRET
       );
 
-    //   const is_valid = await authService.is_valid_token(
-    //     decodedRefreshToken.session_id
-    //   );
-
-      if (decodedToken.username === decodedRefreshToken.username ) {
+  
+      if (decodedToken.email === decodedRefreshToken.email ) {
         const result = generateToken(
               jwtContent,
               process.env.JWT_SECRET,
