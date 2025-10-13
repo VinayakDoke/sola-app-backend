@@ -48,7 +48,23 @@ app.get('/', (req, res) => {
 app.get('/api/example', (req, res) => {
   res.json({ message: 'This is an example API response.' })
 })
-
+app.get("/api/logout",  (req, res)=>{
+    try {
+      res.clearCookie("access_token", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict"
+      });
+      res.clearCookie("refresh_token", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict"
+      });
+      res.status(200).json({status:'success',message:'Logout successful.' });
+    } catch (err) {
+      res.status(500).json({ error: err.message,status:'fail',message:'something went wrong' });
+    }
+});
 app.use('/api/users', userRouter)
 app.use('/api/contact', contactRouter)
 app.use('/api/riders', verifyToken, riderRouter)
