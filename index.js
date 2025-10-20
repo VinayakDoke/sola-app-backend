@@ -80,9 +80,9 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something went wrong!' })
 })
 
-db.sequelize.authenticate({ alter: true }).then(() => {
-  console.log("DB connected...");
-});
+// db.sequelize.authenticate({ alter: true }).then(() => {
+//   console.log("DB connected...");
+// });
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`)
