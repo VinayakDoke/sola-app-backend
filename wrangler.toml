@@ -1,14 +1,14 @@
-name = "solacabs-backend"
-main = "src/index.js"
-compatibility_date = "2025-10-20"
-compatibility_flags = ["nodejs_compat"]
+name = "solo-app"
 type = "javascript"
 
 account_id = "b7ce0a68968a52be48db93cd0bff48cf"
 workers_dev = true
+compatibility_flags = ["nodejs_compat"]
+compatibility_date = "2025-10-20"
 
+# Remove or disable the build command:
 [build]
-command = "npm run build"
+command = ""
 
 [build.upload]
 format = "modules"
