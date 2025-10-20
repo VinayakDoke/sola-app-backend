@@ -1,16 +1,14 @@
-
 name = "solacabs-backend"
+main = "src/index.js"
+compatibility_date = "2025-10-20"
+compatibility_flags = ["nodejs_compat"]
 type = "javascript"
 
 account_id = "b7ce0a68968a52be48db93cd0bff48cf"
 workers_dev = true
-compatibility_flags = ["nodejs_compat"]
 
 [build]
 command = "npm run build"
+
 [build.upload]
 format = "modules"
-
-compatibility_date = "2025-10-20"
-
-pages_build_output_dir = "./dist"
