@@ -6,5 +6,4 @@ account_id = "b7ce0a68968a52be48db93cd0bff48cf"
 workers_dev = true
 
 [build]
-command = "npm run build"  # Optional if you have build steps
 upload_format = "modules"
