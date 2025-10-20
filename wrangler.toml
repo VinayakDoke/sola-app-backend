@@ -1,4 +1,5 @@
-name = "solo-app"
+
+name = "solacabs-backend"
 type = "javascript"
 
 account_id = "b7ce0a68968a52be48db93cd0bff48cf"
@@ -12,5 +13,4 @@ format = "modules"
 
 compatibility_date = "2025-10-20"
 
-# Pages-specific setting:
 pages_build_output_dir = "./dist"
