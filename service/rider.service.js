@@ -29,15 +29,15 @@ class RiderService {
     }
   }
 
-  getRiderByVenderId = async vender_id => {
-    try {
-      const riders = await Rider.findAll({ where: { vender_id } })
-      return { status: 'success', riders }
-    } catch (err) {
-      console.log(err)
-      return { status: 'error', message: 'Failed to fetch riders' }
-    }
-  }
+  // getRiderByVenderId = async vender_id => {
+  //   try {
+  //     const riders = await Rider.findAll({ where: { vender_id } })
+  //     return { status: 'success', riders }
+  //   } catch (err) {
+  //     console.log(err)
+  //     return { status: 'error', message: 'Failed to fetch riders' }
+  //   }
+  // }
   getRiderByVenderId = async vender_id => {
     try {
       const riders = await Rider.findAll({ where: { vender_id } })
