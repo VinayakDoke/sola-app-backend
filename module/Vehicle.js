@@ -1,6 +1,6 @@
 // models/Vehicle.js
-import { DataTypes, Model } from 'sequelize';
-import sequelize from '../config/database.js'; // your Sequelize instance
+import { DataTypes, Model } from 'sequelize'
+import sequelize from '../config/database.js' // your Sequelize instance
 
 class Vehicle extends Model {}
 
@@ -10,128 +10,136 @@ Vehicle.init(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      allowNull: false,
+      allowNull: false
     },
     vendor_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: false
     },
     type: {
       type: DataTypes.ENUM('Hatchback', 'Sedan', 'MUV', 'SUV'),
-      allowNull: false,
+      allowNull: false
     },
     vehicle_no: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: false
     },
     model: {
       type: DataTypes.STRING(20),
-      allowNull: true,
+      allowNull: true
     },
     rc_no: {
       type: DataTypes.STRING(100),
-      allowNull: true,
+      allowNull: true
     },
     rc_date_from: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: true
     },
     rc_date_upto: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: true
     },
     puc_no: {
       type: DataTypes.STRING(200),
-      allowNull: true,
+      allowNull: true
     },
     puc_date_from: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: true
     },
     puc_date_to: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: true
     },
     fitness_certificate_no: {
       type: DataTypes.STRING(200),
-      allowNull: true,
+      allowNull: true
     },
     fitness_certificate_from: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: true
     },
     fitness_certificate_to: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: true
     },
     insurance: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: true
     },
     insurance_from: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: true
     },
     insurance_to: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: true
     },
     rc_pic: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: true
     },
     puc_pic: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: true
     },
     fitness_certificate_pic: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: true
     },
     insurance_pic: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: true
     },
     veh_pic: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: true
     },
     veh_pic1: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: true
     },
     veh_pic2: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: true
     },
     veh_pic3: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: true
     },
     veh_pic4: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: true
     },
     createdAt: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
+      defaultValue: DataTypes.NOW
     },
     updatedAt: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: true
     },
     deletedAt: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: true
     },
+    registration_status: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    approved: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    }
   },
   {
     sequelize,
     modelName: 'Vehicle',
     tableName: 'vehical',
     paranoid: true, // enables soft delete
-    timestamps: true, // automatically adds createdAt and updatedAt
+    timestamps: true // automatically adds createdAt and updatedAt
   }
-);
+)
 
-export default Vehicle;
+export default Vehicle
