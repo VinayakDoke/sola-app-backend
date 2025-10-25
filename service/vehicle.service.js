@@ -76,6 +76,51 @@ class VehicleService {
       return { status: 'error', message: 'Vehicle update failed' }
     }
   }
+  updateRegistrationStatus = async id => {
+    try {
+      const data = await Vehicle.findByPk(id)
+      if (!data?.rc_pic) {
+        return { status: 'error', message: 'RC Book Copy is required' }
+      }
+      if (!data?.puc_pic) {
+        return { status: 'error', message: 'PUC Certificate is required' }
+      }
+      if (!data?.insurance_pic) {
+        return { status: 'error', message: 'Vehicle Insurance is required' }
+      }
+       if (!data?.veh_pic) {
+        return { status: 'error', message: 'Vehicle Picture Front is required' }
+      }
+      if (!data?.veh_pic1) {
+        return { status: 'error', message: 'Vehicle Picture Back is required' }
+      } 
+      if (!data?.veh_pic2) {
+        return { status: 'error', message: 'Vehicle Picture Left is required' }
+      }
+      if (!data?.veh_pic3) {
+        return { status: 'error', message: 'Vehicle Picture Right is required' }
+      }
+       if (!data?.veh_pic4) {
+        return { status: 'error', message: 'Vehicle Picture Internal is required' }
+      }
+
+      await Vehicle.update(
+        {
+          registration_status: 1
+        },
+        { where: { id: id }, logging: console.log }
+      )
+
+      return {
+        status: 'success',
+        message: 'Vehicle updated successfully',
+        user: []
+      }
+    } catch (error) {
+      console.log(error)
+      return { status: 'error', message: 'Vehicle update failed' }
+    }
+  }
 }
 
 export default new VehicleService()
