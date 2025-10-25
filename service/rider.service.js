@@ -41,7 +41,11 @@ class RiderService {
   getRiderByVenderId = async vender_id => {
     try {
       const riders = await Rider.findAll({ where: { vender_id } })
-      return { status: 'success', riders:riders ,message:'riders fetched successfully'}
+      return {
+        status: 'success',
+        riders: riders,
+        message: 'riders fetched successfully'
+      }
     } catch (err) {
       console.log(err)
       return { status: 'error', message: 'Failed to fetch riders' }
@@ -59,15 +63,13 @@ class RiderService {
   }
   updateRiderCertificate = async (data, id) => {
     try {
-     
       const result = await Rider.update(
         {
           pic: data.passport_photo,
           adhar_photo: data.adhar_photo,
           driving_licence_photo: data.driving_license_photo
         },
-        { where: { id: id }, logging: console.log },
-        
+        { where: { id: id }, logging: console.log }
       )
       return {
         status: 'success',
@@ -76,6 +78,36 @@ class RiderService {
       }
     } catch (err) {
       console.log(err)
+      return { status: 'error', message: 'Rider update failed' }
+    }
+  }
+  updateRegistrationStatus = async id => {
+    try {
+      const data = await Rider.findByPk(id)
+      if (!data?.passport_photo) {
+        return { status: 'error', message: 'Passport Size Photo is required' }
+      }
+      if (!data?.adhar_photo) {
+        return { status: 'error', message: 'Aadhaar Card Photo is required' }
+      }
+      if (!data?.driving_license_photo) {
+        return { status: 'error', message: 'Driving License Photo is required' }
+      }
+
+      await Rider.update(
+        {
+          registration_status: 1
+        },
+        { where: { id: id }, logging: console.log }
+      )
+
+      return {
+        status: 'success',
+        message: 'Rider updated successfully',
+        user: []
+      }
+    } catch (error) {
+      console.log(error)
       return { status: 'error', message: 'Rider update failed' }
     }
   }
